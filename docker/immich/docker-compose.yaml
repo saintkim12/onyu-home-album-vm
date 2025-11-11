@@ -44,7 +44,7 @@ services:
       # https://github.com/immich-app/immich/issues/1145#issuecomment-2480078671
       DB_HOSTNAME: '${IMMICH_DB_HOSTNAME}'
     volumes:
-      - model-cache:/cache
+      - /opt/data/immich-model-cache:/cache
     restart: always
     healthcheck:
       disable: false
@@ -75,6 +75,6 @@ services:
     shm_size: 128mb
     restart: always
 
-volumes:
-  model-cache:
-  immich_db:
+# volumes:
+  # model-cache: => /opt/data/immich-model-cache
+  # immich_db: => /opt/data/immich-db

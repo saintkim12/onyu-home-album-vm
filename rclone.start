@@ -1,0 +1,17 @@
+rclone mount immich-s3:immich /mnt/immich-s3 \
+  --vfs-cache-mode=full \
+  --cache-dir=/mnt/rclone-cache \
+  --vfs-cache-max-size 12G \
+  --vfs-cache-max-age 12h \
+  --vfs-cache-poll-interval 10m \
+  --dir-cache-time=6h \
+  --poll-interval=15s \
+  --allow-other \
+  --umask=002 \
+  --buffer-size=64M \
+  --attr-timeout=30s \
+  --log-level INFO \
+  --log-file /var/log/rclone-immich.log \
+  --rc \
+  --rc-addr=127.0.0.1:5572 \
+  --rc-no-auth &
