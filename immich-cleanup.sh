@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # /usr/local/bin/immich-cleanup.sh
 
 PORTAINER_URL="http://192.168.1.17:8100/api"
@@ -32,6 +32,11 @@ curl -X POST \
   -H "X-API-Key:$TOKEN" \
   "$PORTAINER_URL/stacks/$STACK_ID/start?endpointId=$ENDPOINT_ID"
 echo ""
+
+# 5. 찌꺼기 볼륨 제거(immich 외 서비스가 추가되는 경우 정리 필요)
+LOGTIME=$(date '+%Y-%m-%d %H:%M:%S')
+echo "[$LOGTIME] Removing dangling volumes.."
+docker volume prune -f
 
 LOGTIME=$(date '+%Y-%m-%d %H:%M:%S')
 echo "[$LOGTIME] Immich cleanup finished."
