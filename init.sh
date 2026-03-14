@@ -43,16 +43,25 @@ cp rclone.start /etc/local.d/rclone.start
 chmod +x /etc/local.d/rclone.start
 rc-update add local
 
-### [7] Portainer Docker 컨테이너 실행
-echo "🚀 Starting Portainer..."
-cd portainer
-export PORTAINER_PORT=8100
-docker-compose up -d
+### [7] Portainer Agent Docker 컨테이너 실행
+echo "🚀 Starting Portainer Agent..."
+cd portainer-agent
+export PORTAINER_AGENT_PORT=9001
+docker compose up -d
 
-echo "✅ Portainer started on :$PORTAINER_PORT"
-echo "👉 Access at: http://$YOUR_SERVER_IP:$PORTAINER_PORT"
+echo "✅ Portainer Agent started on :$PORTAINER_AGENT_PORT"
+# echo "👉 Access at: http://$YOUR_SERVER_IP:$PORTAINER_AGENT_PORT"
 
-echo ""
-echo "📝 Next Step:"
-echo "1. Open Portainer UI"
-echo "2. Set Stack and Run Container"
+# ### [8] Portainer Docker 컨테이너 실행
+# echo "🚀 Starting Portainer..."
+# cd portainer
+# export PORTAINER_PORT=8100
+# docker-compose up -d
+
+# echo "✅ Portainer started on :$PORTAINER_PORT"
+# echo "👉 Access at: http://$YOUR_SERVER_IP:$PORTAINER_PORT"
+
+# echo ""
+# echo "📝 Next Step:"
+# echo "1. Open Portainer UI"
+# echo "2. Set Stack and Run Container"
